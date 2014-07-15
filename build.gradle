@@ -1,0 +1,16 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+archivesBaseName = 'groovycure'
+group = 'groovycure'
+version = '0.1'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies { 
+  compile 'org.codehaus.groovy:groovy-all:2.3.2'
+  testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+}
+
