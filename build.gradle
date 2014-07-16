@@ -14,3 +14,19 @@ dependencies {
   testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
 }
 
+install.doFirst {
+  def dir = null
+
+  dir = new File(System.getProperty('user.home'), '.gradle/cache/groovycure').absolutePath
+  if( new File(dir).exists() ){
+    ant.echo("Remove gradle-cache-dir : ${dir}")
+    ant.delete(dir:dir)
+  }
+
+  dir = new File(System.getProperty('user.home'), '.groovy/grapes/groovycure').absolutePath
+  if( new File(dir).exists() ){
+    ant.echo("Remove gradle-cache-dir : ${dir}")
+    ant.delete(dir:dir)
+  }
+}
+
