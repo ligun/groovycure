@@ -1,3 +1,5 @@
+package groovycure
+
 import spock.lang.*
 
 class PrecureMapSpec extends Specification {
