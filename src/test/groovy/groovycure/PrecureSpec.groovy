@@ -42,17 +42,31 @@ class PrecureSpec extends Specification{
     current.toString() == 'ハピネスチャージプリキュア'
   }
 
-  def "勝手キュアを追加しようとしたら例外が出る"() {
+  def "勝手シリーズを追加しようとしたら例外が出る"() {
     given:
     def slug = 'agile'
     def title = 'アジャイルプリキュア'
+    def girls = ['ligun':
+		 new Girl('りぐん','キュアニート','あふれる汗！キュアニート！')]
 
     when:
-    sut[slug] = new Series(title, new Date(), null)
+    sut[slug] = new Series(title, new Date(), null, girls)
 
     then:
     thrown(UnsupportedOperationException)
     
+  }
+
+  def "勝手キュアを追加しようとしたら例外が出る"() {
+    given:
+    def slug = 'ligun'
+    def girl = new Girl('りぐん','キュアニート','あふれる汗！キュアニート！')
+
+    when:
+    sut.unmarked.girls.put(slug,girl)
+    
+    then:
+    thrown(UnsupportedOperationException)
   }
 
   def "ふたりはプリキュアの放送開始日が正しい"() {

@@ -3,7 +3,7 @@ apply plugin: 'maven'
 
 archivesBaseName = 'groovycure'
 group = 'groovycure'
-version = '0.0.2'
+version = '0.0.3'
 
 repositories {
   mavenCentral()

@@ -1,10 +1,10 @@
 package groovycure
 
 class Girl { 
-  private String name = ''
-  private String  precure_name = ''
+  private final String name
+  private final String  precure_name
   private boolean transformed = false
-  private String prologue = ''
+  private final String prologue
 
   Girl(name, precure_name, prologue) {
     this.name = name

@@ -32,4 +32,18 @@ class GirlsSpec extends Specification {
     then:
     name == "りぐん(キュアニート)"
   }
+
+  def "プロパティを変更できない"() {
+    when:
+    sut."$property" = data
+
+    then:
+    thrown(ReadOnlyPropertyException)
+
+    where:
+    property        | data
+    'name'          | 'ぐりん'
+    'precure_name'  | 'キュアハケンシャイン'
+    'prologue'      | '罵声浴びる一輪の花！キュアハケンシャイン！'
+  }
 }
