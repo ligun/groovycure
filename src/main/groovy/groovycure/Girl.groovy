@@ -1,3 +1,5 @@
+package groovycure
+
 class Girl { 
   private String name = ''
   private String  precure_name = ''

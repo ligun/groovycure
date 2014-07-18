@@ -1,3 +1,5 @@
+package groovycure
+
 import spock.lang.*
 
 class GirlsSpec extends Specification {
