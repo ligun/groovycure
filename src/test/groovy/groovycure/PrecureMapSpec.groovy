@@ -24,28 +24,14 @@ class PrecureMapSpec extends Specification {
     )
   }
 
-  def "放送中チェックのテスト"() {
-    when:
-    String now = sut.now()
+  def "シリーズのkeyがslugになっている"() {
+    expect:
+    sut."$slug".toString() == title
 
-    then:
-    now == "アジャイルプリキュア"
-  }
-
-  def "slugリストの取得テスト"() { 
-    when:
-    def slug_list = sut.slug()
-
-    then:
-    slug_list == ["waterfall","agile"]
-  }
-
-  def "seriesリストの取得テスト"() {
-    when:
-    def series_list = sut.series()
-    def expected_list = [sut.waterfall, sut.agile]
-
-    then:
-    series_list == expected_list
+    where:
+    slug       | title
+    'waterfall'| 'ウォーターフォールプリキュア'
+    'agile'    | 'アジャイルプリキュア'
+    
   }
 }

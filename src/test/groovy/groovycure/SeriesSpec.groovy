@@ -1,3 +1,5 @@
+package groovycure
+
 import spock.lang.*
 
 class SeriesSpec extends Specification {
@@ -5,7 +7,6 @@ class SeriesSpec extends Specification {
 
   def setup(){
     sut = new Series("アジャイルプリキュア",
-			 "agile",
 			 new Date("2014/01/01"),
 			 new Date("2015/01/01"))
   }
