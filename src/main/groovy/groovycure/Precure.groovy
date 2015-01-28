@@ -214,6 +214,24 @@ class Precure {
       '夜空にきらめく希望の星！キュアフォーチュン！'
     )
     
+    def haruka = new Girl(
+      '春野はるか',
+      'キュアフローラ',
+      ''
+    )
+    
+    def minami = new Girl(
+      '海藤みなみ',
+      'キュアマーメイド',
+      ''
+    )
+    
+    def kirara = new Girl(
+      '天ノ川きらら',
+      'キュアトゥインクル',
+      ''
+    )
+    
     def unmarked_girls = Collections.unmodifiableMap(
       [
 	'nagisa':nagisa,
@@ -301,6 +319,13 @@ class Precure {
 	'yuuko':yuuko,
       'iona':iona
       ])
+      
+    def goprincess_girls = Collections.unmodifiableMap(
+      [
+        'haruka':haruka,
+        'minami':minami,
+        'kirara':kirara,
+      ])
 
     precure = Collections.unmodifiableMap(  
       new LinkedHashMap<String, Series>(){{
@@ -314,7 +339,8 @@ class Precure {
 	  put('suite',new Series('スイートプリキュア',new Date('2011/2/6'),new Date('2012/2/29'),suite_girls))
 	  put('smile',new Series('スマイルプリキュア',new Date('2012/2/5'),new Date('2013/1/27'),smile_girls))
 	  put('dokidoki',new Series('ドキドキ！プリキュア',new Date('2013/2/3'),new Date('2014/1/26'),dokidoki_girls))
-	  put('happinesscharge',new Series('ハピネスチャージプリキュア',new Date('2014/2/2'),null,happinesscharge_girls,true))
+	  put('happinesscharge',new Series('ハピネスチャージプリキュア',new Date('2014/2/2'),new Date('2015/1/25'),happinesscharge_girls))
+	  put('goprincess',new Series('Go！プリンセスプリキュア',new Date('2015/2/1'),null,goprincess_girls,true))
 	}}
     )
 
