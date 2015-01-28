@@ -314,7 +314,7 @@ class Precure {
 	  put('suite',new Series('スイートプリキュア',new Date('2011/2/6'),new Date('2012/2/29'),suite_girls))
 	  put('smile',new Series('スマイルプリキュア',new Date('2012/2/5'),new Date('2013/1/27'),smile_girls))
 	  put('dokidoki',new Series('ドキドキ！プリキュア',new Date('2013/2/3'),new Date('2014/1/26'),dokidoki_girls))
-	  put('happinesscharge',new Series('ハピネスチャージプリキュア',new Date('2014/2/2'),null,happinesscharge_girls,true))
+	  put('happinesscharge',new Series('ハピネスチャージプリキュア',new Date('2014/2/2'),new Date('2015/1/25'),happinesscharge_girls,true))
 	}}
     )
 
