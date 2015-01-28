@@ -1,4 +1,5 @@
 # groovycure
+[![Build Status](https://travis-ci.org/ligun/groovycure.svg?branch=master)](https://travis-ci.org/ligun/groovycure)
 
 All about Japanese battle heroine "Pretty Cure"
 
