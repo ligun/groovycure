@@ -11,7 +11,7 @@ class PrecureSpec extends Specification{
 
     then:
     slug == ['unmarked','maxheart','splashstar','yes','gogo',
-	    'fresh','heartcatch','suite','smile','dokidoki','happinesscharge']
+	    'fresh','heartcatch','suite','smile','dokidoki','happinesscharge','goprincess']
   }
 
   def "シリーズが順番通り取得できる"() {
@@ -30,7 +30,8 @@ class PrecureSpec extends Specification{
       'スイートプリキュア',
       'スマイルプリキュア',
       'ドキドキ！プリキュア',
-      'ハピネスチャージプリキュア'
+      'ハピネスチャージプリキュア',
+      'Go！プリンセスプリキュア'
     ]
   }
 
@@ -39,7 +40,7 @@ class PrecureSpec extends Specification{
     def current = sut.now()
 
     then:
-    current.toString() == 'ハピネスチャージプリキュア'
+    current.toString() == 'Go！プリンセスプリキュア'
   }
 
   def "勝手シリーズを追加しようとしたら例外が出る"() {
