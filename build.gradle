@@ -1,6 +1,15 @@
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
+/*
+plugins {
+  id 'groovy'
+  id 'maven'
+  id 'maven-publish'
+  id 'com.jfrog.bintray' version '1.0'
+}
+*/
+
 archivesBaseName = 'groovycure'
 group = 'groovycure'
 version = '0.0.4'
@@ -12,6 +21,47 @@ repositories {
 dependencies { 
   compile 'org.codehaus.groovy:groovy-all:2.3.2'
   testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+}
+
+task javadocJar(type: Jar, dependsOn: groovydoc) {
+  classifier = 'javadoc'
+  from groovydoc.destinationDir
+}
+
+task sourcesJar(type: Jar) {
+  from sourceSets.main.allSource
+  classifier = 'sources'
+}
+
+artifacts {
+  archives jar
+  archives javadocJar
+  archives sourcesJar
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      repository(url: "file:${buildDir}")
+      pom {
+        project {
+          inceptionYear '2015'
+          packaging 'jar'
+          licenses {
+            license {
+              name 'The MIT License'
+              url 'http://opensource.org/licenses/MIT'
+              distribution 'repo'
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+task getDir << {
+  println new File(System.getProperty('user.home'), '.gradle/cache/groovycure').absolutePath
 }
 
 install.doFirst {

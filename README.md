@@ -6,24 +6,42 @@ All about Japanese battle heroine "Pretty Cure"
 Inspired by [pycure](https://github.com/drillbits/pycure) & [rubicure](https://github.com/sue445/rubicure)
 
 ## Installation
-```shell
-git clone https://github.com/ligun/groovycure.git
-cd ./groovycure
-gradle install
+Use Grape in Groovy script file.
+```groovy
+@Grab('groovycure:groovycure')
+```
+
+Or install it using Gradle
+```groovy
+repositories {
+  jcenter()
+}
+dependencies {
+  compile 'groovycure:groovycure:+'
+}
 ```
 
 ## Usage
-Run groovy command or groovyConsole
+Run with Grape
 ```groovy
 @Grab('groovycure:groovycure')
 import static groovycure.Precure.precure
 
-precure.now()
+println precure.now()
 ```
-Run groovysh
+
+Or run with Gradle
 ```groovy
+import static groovycure.Precure.precure
+
+println precure.now()
+```
+If you execute groovycure in groovysh
+```groovy
+$ groovysh
+
 > groovy.grape.Grape.grab(group:'groovycure',module:'groovycure')
-> import grooycure.Precure
+> import static grooycure.Precure.precure
 >
 > Precure.precure.now()
 ```
