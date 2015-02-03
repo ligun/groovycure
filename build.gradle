@@ -5,14 +5,13 @@ apply plugin: 'maven'
 plugins {
   id 'groovy'
   id 'maven'
-  id 'maven-publish'
   id 'com.jfrog.bintray' version '1.0'
 }
 */
 
 archivesBaseName = 'groovycure'
 group = 'groovycure'
-version = '0.0.4'
+version = '0.0.5'
 
 repositories {
   mavenCentral()
