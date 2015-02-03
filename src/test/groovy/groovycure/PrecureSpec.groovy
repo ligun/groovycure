@@ -70,19 +70,52 @@ class PrecureSpec extends Specification{
     thrown(UnsupportedOperationException)
   }
 
-  def "ふたりはプリキュアの放送開始日が正しい"() {
+  @Unroll
+  def "#seriesの放送開始日は#dateである"() {
     when:
-    def date = sut.unmarked.broadcast_from
-
+      def broadcast_from = sut."$series".broadcast_from
+      
     then:
-    date == new Date('2004/02/01')
+      broadcast_from == new Date("$date")
+      
+    where:
+      series            |  date
+      'unmarked'        |  '2004/02/01'
+      'goprincess'      |  '2015/02/01'
   }
-
-  def "ふたりはプリキュアの放送終了日が正しい"() {
+  
+  @Unroll
+  def "#seriesの放送終了日は#dateである"() {
     when:
-    def date = sut.unmarked.broadcast_to
-
+      def broadcast_to = sut."$series".broadcast_to
+      
     then:
-    date == new Date('2005/01/30')
+      broadcast_to == new Date("$date")
+      
+    where:
+      series            |  date
+      'unmarked'        |  '2005/01/30'
+      'happinesscharge' |  '2015/01/25'
+  }
+  
+  def "放映中のシリーズの放送終了日は設定されていない"() {
+    when:
+      def date = sut.now().broadcast_to
+      
+    then:
+      date == null
+  }
+  
+  @Unroll
+  def "#seriesヒロイン#nameの変身バンクは#speachから始まる"() {
+    when:
+      def girl = sut."$series".girls."$name"
+      
+    then:
+      girl.transform().startsWith(speach)
+      
+    where:
+      series        |  name      |  speach
+      'goprincess'  |  'haruka'  |  '咲き誇る花のプリンセス！キュアフローラ！'
   }
 }
