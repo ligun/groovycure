@@ -1,4 +1,5 @@
 # groovycure
+[![Download](https://api.bintray.com/packages/ligun/maven/groovycure/images/download.svg) ](https://bintray.com/ligun/maven/groovycure/_latestVersion)
 [![Build Status](https://travis-ci.org/ligun/groovycure.svg?branch=master)](https://travis-ci.org/ligun/groovycure)
 
 All about Japanese battle heroine "Pretty Cure"
