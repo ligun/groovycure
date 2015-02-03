@@ -33,7 +33,8 @@ class GirlsSpec extends Specification {
     name == "りぐん(キュアニート)"
   }
 
-  def "プロパティを変更できない"() {
+  @Unroll
+  def "#propertyの値を変更できない"() {
     when:
     sut."$property" = data
 

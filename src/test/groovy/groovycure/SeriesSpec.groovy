@@ -7,15 +7,15 @@ class SeriesSpec extends Specification {
 
   def setup(){
     def girls = ['ligun':
-		 new Girl(
-		   'りぐん',
-		   'キュアニート','あふれる汗！キュアニート！'
-		 )]
+      new Girl(
+      'りぐん',
+      'キュアニート','あふれる汗！キュアニート！'
+     )]
     sut = new Series("アジャイルプリキュア",
-		     new Date("2014/01/01"),
-		     new Date("2015/01/01"),
-		     girls
-		    )
+            new Date("2014/01/01"),
+            new Date("2015/01/01"),
+            girls
+          )
   }
 
   def "toStringのテスト"() {
@@ -34,7 +34,8 @@ class SeriesSpec extends Specification {
     girls == ['ligun']
   }
 
-  def "プロパティを変更できない"() {
+  @Unroll
+  def "#propertyの値を変更できない"() {
     when:
     sut."$property" = data
 
@@ -46,7 +47,7 @@ class SeriesSpec extends Specification {
     'title'         | 'アジャイルプリキュア'
     'broadcast_from'| new Date()
     'broadcast_to'  | new Date()
-    'girls'         | ['ligun':new Girl('りぐん','キュアニート','あふれる汗！')]
+    'girls'         | ['ligun':new Girl('りぐん','キュアニート','あふれる汗！キュアニート！')]
   }
 
   def "メンバーのslugリストを取得する"() {
