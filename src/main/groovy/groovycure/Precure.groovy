@@ -217,7 +217,7 @@ class Precure {
     def haruka = new Girl(
       '春野はるか',
       'キュアフローラ',
-      ''
+      '咲き誇る花のプリンセス！キュアフローラ！'
     )
     
     def minami = new Girl(
