@@ -116,6 +116,11 @@ class PrecureSpec extends Specification{
       
     where:
       series        |  name      |  speach
-      'goprincess'  |  'haruka'  |  '咲き誇る花のプリンセス！キュアフローラ！'
+      'goprincess'| 'haruka'  |  '咲き誇る花のプリンセス！キュアフローラ！'
+      'goprincess'| 'minami'  | '澄みわたる海のプリンセス！キュアマーメイド！'
+      'goprincess'| 'kirara'  | 'きらめく星のプリンセス！キュアトゥインクル！'
+      'goprincess'| 'towa'    | '真紅の炎のプリンセス！キュアスカーレット！'
+
+
   }
 }

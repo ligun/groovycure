@@ -223,16 +223,22 @@ class Precure {
     def minami = new Girl(
       '海藤みなみ',
       'キュアマーメイド',
-      ''
+      '澄みわたる海のプリンセス！キュアマーメイド！'
     )
     
     def kirara = new Girl(
       '天ノ川きらら',
       'キュアトゥインクル',
-      ''
+      'きらめく星のプリンセス！キュアトゥインクル！'
     )
-    
-    def unmarked_girls = Collections.unmodifiableMap(
+
+    def towa = new Girl(
+       '紅城トワ',
+       'キュアスカーレット',
+       '真紅の炎のプリンセス！キュアスカーレット！'
+    )
+
+      def unmarked_girls = Collections.unmodifiableMap(
       [
 	'nagisa':nagisa,
 	'honoka':honoka
@@ -325,6 +331,7 @@ class Precure {
         'haruka':haruka,
         'minami':minami,
         'kirara':kirara,
+        'towa':towa,
       ])
 
     precure = Collections.unmodifiableMap(  
@@ -334,7 +341,7 @@ class Precure {
 	  put('splashstar',new Series('ふたりはプリキュア Splash Star',new Date('2006/2/5'),new Date('2007/1/28'),splashstar_girls))
 	  put('yes',new Series('Yes！プリキュア5',new Date('2007/2/4'),new Date('2008/1/27'),yes_girls))
 	  put('gogo',new Series('Yes！プリキュア5 Go Go！',new Date('2008/2/3'),new Date('2009/1/25'),gogo_girls))
-	  put('fresh',new Series('フレッシュプリキュア',,new Date('2009/2/1'),new Date('2010/1/31'),fresh_girls))
+	  put('fresh',new Series('フレッシュプリキュア',new Date('2009/2/1'),new Date('2010/1/31'),fresh_girls))
 	  put('heartcatch',new Series('ハートキャッチプリキュア',new Date('2010/2/7'),new Date('2011/1/30'),heartcatch_girls))
 	  put('suite',new Series('スイートプリキュア',new Date('2011/2/6'),new Date('2012/2/29'),suite_girls))
 	  put('smile',new Series('スマイルプリキュア',new Date('2012/2/5'),new Date('2013/1/27'),smile_girls))
