@@ -123,4 +123,29 @@ class PrecureSpec extends Specification{
 
 
   }
+
+  @Unroll
+  def "#seriesのメンバーは#expectedである"(){
+    when:
+      def girls = sut."$series".girls.collect{ it.key }
+
+    then:
+      girls == expected
+
+    where:
+      series               || expected
+      'unmarked'         || ['nagisa', 'honoka']
+      'maxheart'         || ['nagisa', 'honoka', 'hikari']
+      'splashstar'       || ['saki', 'mai']
+      'yes'               || ['nozomi', 'rin', 'urara', 'komachi', 'karen']
+      'gogo'              || ['nozomi', 'rin', 'urara', 'komachi', 'karen', 'kurumi']
+      'fresh'             || ['love', 'miki', 'inori', 'setsuna']
+      'heartcatch'       || ['tsubomi', 'erika', 'itsuki', 'yuri']
+      'suite'             || ['hibiki', 'kanade', 'eren', 'ako']
+      'smile'             || ['miyuki', 'akane', 'yayoi', 'nao', 'reika']
+      'dokidoki'         || ['mana', 'rikka', 'arisu', 'makoto', 'aguri']
+      'happinesscharge' || ['megumi', 'hime', 'yuuko', 'iona']
+      'goprincess'       || ['haruka', 'minami', 'kirara', 'towa']
+
+  }
 }
