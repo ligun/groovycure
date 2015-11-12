@@ -4,9 +4,12 @@ import spock.lang.*
 
 class GirlsSpec extends Specification {
     def sut
+    def name = 'りぐん'
+    def precure_name = 'キュアニート'
+    def prologue = 'あふれる汗！キュアニート！'
 
     def setup(){
-        sut = new Girl("りぐん", "キュアニート", "あふれる汗！キュアニート！")
+        sut = new Girl(name, precure_name, prologue)
     }
 
     def "変身前の名前テスト"() {
@@ -14,7 +17,7 @@ class GirlsSpec extends Specification {
         sut.transformed = false
 
         then:
-        sut.name == "りぐん"
+        sut.name == name
     }
 
     def "変身後の名前テスト"() {
@@ -22,15 +25,15 @@ class GirlsSpec extends Specification {
         sut.transformed = true
 
         then:
-        sut.name == "キュアニート"
+        sut.name == precure_name
     }
 
     def "名前のテスト"() {
         when:
-        String name = sut
+        String precure = sut
 
         then:
-        name == "りぐん(キュアニート)"
+        precure == "${name}(${precure_name})"
     }
 
     @Unroll
@@ -46,5 +49,24 @@ class GirlsSpec extends Specification {
         'name'          | 'ぐりん'
         'precure_name'  | 'キュアハケンシャイン'
         'prologue'      | '罵声浴びる一輪の花！キュアハケンシャイン！'
+    }
+
+    def "変身バンクのテスト"() {
+        when:
+        sut.transformed = false
+
+        then:
+        sut.transform() == prologue
+    }
+
+    def "変身解除のテスト"() {
+        setup:
+        sut.transformed = true
+
+        when:
+        sut.detransform()
+
+        then:
+        sut.transformed == false
     }
 }

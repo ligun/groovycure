@@ -17,9 +17,15 @@ class Girl {
         return "${this.name}(${this.precure_name})"
     }
 
-    def transform(){
+    String transform(){
+        if(transformed) return ""
         this.transformed = true
         return this.prologue
+    }
+
+    void detransform() {
+        this.transformed = false
+        return
     }
 
     String getName(){
