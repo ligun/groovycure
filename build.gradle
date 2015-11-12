@@ -1,6 +1,7 @@
 apply plugin: 'groovy'
 apply plugin: 'maven'
 apply plugin: 'idea'
+apply plugin: 'application'
 
 /*
 plugins {
@@ -12,6 +13,7 @@ plugins {
 
 archivesBaseName = 'groovycure'
 group = 'groovycure'
+mainClassName = 'groovycure.Precure'
 version = '0.0.6'
 
 repositories {
@@ -19,7 +21,9 @@ repositories {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.3.2'
+    compile module('org.codehaus.groovy:groovy-all:2.3.2') {
+        dependency('commons-cli:commons-cli:1.2')
+    }
     testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
 }
 
@@ -80,3 +84,42 @@ install.doFirst {
     }
 }
 
+run {
+    if(project.hasProperty('args')) {
+        args project.args.split(/s+/)
+    }
+}
+
+task jarsh(type: Jar, dependsOn: jar) {
+    baseName = "${project.name}-fullpack"
+
+    manifest {
+        attributes 'Main-Class': 'groovycure.Precure'
+    }
+    from configurations.compile.collect{ it.isDirectory()? it : zipTree(it) }
+    from "$buildDir/classes/main"
+    from "$buildDir/resources/main"
+
+    doLast {
+        def jarshDir = new File("${buildDir}/jarsh")
+        jarshDir.mkdir()
+
+        def shell = new File("${jarshDir}/precure")
+        def bat = new File("${jarshDir}/precure.bat")
+        def jar = new File("${buildDir}/libs/${baseName}-${version}.jar")
+
+        shell.text = """\
+#!/bin/sh
+java -jar "\$0" "\$@"
+exit \$?
+"""
+        shell << jar.bytes
+
+        bat.text = """\
+@echo off
+java -jar "%0" %*\r\n\
+exit /B 1\r\n\
+"""
+        bat << jar.bytes
+    }
+}

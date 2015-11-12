@@ -4,6 +4,30 @@ class Precure implements GroovyInterceptable {
     private static final def precure
     private Precure() {}
 
+    static void main(String... args) {
+        def cli = new CliBuilder(usage:"Precure - Japanese battle heroine -")
+
+        cli.e(argName: 'script', args: 1, 'run script')
+        cli.h(longOpt: 'help', 'display to help')
+
+        def opt = cli.parse(args)
+
+        if(!opt) return
+
+        if(opt.e){
+            def shell = new GroovyShell(Precure.classLoader)
+            shell.evaluate("""\
+import groovycure.Precure
+${opt.e}
+"""
+            )
+            return
+        }
+        if(opt.h){
+            cli.usage()
+        }
+    }
+
     static {
         def nagisa = new Girl(
                 '美墨なぎさ',
