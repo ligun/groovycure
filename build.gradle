@@ -15,68 +15,68 @@ group = 'groovycure'
 version = '0.0.6'
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 
-dependencies { 
-  compile 'org.codehaus.groovy:groovy-all:2.3.2'
-  testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.2'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
 }
 
 task javadocJar(type: Jar, dependsOn: groovydoc) {
-  classifier = 'javadoc'
-  from groovydoc.destinationDir
+    classifier = 'javadoc'
+    from groovydoc.destinationDir
 }
 
 task sourcesJar(type: Jar) {
-  from sourceSets.main.allSource
-  classifier = 'sources'
+    from sourceSets.main.allSource
+    classifier = 'sources'
 }
 
 artifacts {
-  archives jar
-  archives javadocJar
-  archives sourcesJar
+    archives jar
+    archives javadocJar
+    archives sourcesJar
 }
 
 uploadArchives {
-  repositories {
-    mavenDeployer {
-      repository(url: "file:${buildDir}")
-      pom {
-        project {
-          inceptionYear '2015'
-          packaging 'jar'
-          licenses {
-            license {
-              name 'The MIT License'
-              url 'http://opensource.org/licenses/MIT'
-              distribution 'repo'
+    repositories {
+        mavenDeployer {
+            repository(url: "file:${buildDir}")
+            pom {
+                project {
+                    inceptionYear '2015'
+                    packaging 'jar'
+                    licenses {
+                        license {
+                            name 'The MIT License'
+                            url 'http://opensource.org/licenses/MIT'
+                            distribution 'repo'
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     }
-  }
 }
 
 task getDir << {
-  println new File(System.getProperty('user.home'), '.gradle/cache/groovycure').absolutePath
+    println new File(System.getProperty('user.home'), '.gradle/cache/groovycure').absolutePath
 }
 
 install.doFirst {
-  def dir = null
+    def dir = null
 
-  dir = new File(System.getProperty('user.home'), '.gradle/cache/groovycure').absolutePath
-  if( new File(dir).exists() ){
-    ant.echo("Remove gradle-cache-dir : ${dir}")
-    ant.delete(dir:dir)
-  }
+    dir = new File(System.getProperty('user.home'), '.gradle/cache/groovycure').absolutePath
+    if( new File(dir).exists() ){
+        ant.echo("Remove gradle-cache-dir : ${dir}")
+        ant.delete(dir:dir)
+    }
 
-  dir = new File(System.getProperty('user.home'), '.groovy/grapes/groovycure').absolutePath
-  if( new File(dir).exists() ){
-    ant.echo("Remove gradle-cache-dir : ${dir}")
-    ant.delete(dir:dir)
-  }
+    dir = new File(System.getProperty('user.home'), '.groovy/grapes/groovycure').absolutePath
+    if( new File(dir).exists() ){
+        ant.echo("Remove gradle-cache-dir : ${dir}")
+        ant.delete(dir:dir)
+    }
 }
 
