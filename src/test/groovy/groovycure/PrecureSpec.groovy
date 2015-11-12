@@ -146,6 +146,10 @@ class PrecureSpec extends Specification{
       'dokidoki'         || ['mana', 'rikka', 'arisu', 'makoto', 'aguri']
       'happinesscharge' || ['megumi', 'hime', 'yuuko', 'iona']
       'goprincess'       || ['haruka', 'minami', 'kirara', 'towa']
+  }
 
+  def "precureプロパティを使用せずにPrecureクラスから直接動作できる"() {
+    expect:
+      Precure.now() == Precure.precure.now()
   }
 }

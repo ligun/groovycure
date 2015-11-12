@@ -1,7 +1,8 @@
 package groovycure
 
-class Precure {
-  public static final def precure
+class Precure implements GroovyInterceptable {
+  private static final def precure
+  private Precure() {}
 
   static {
     def nagisa = new Girl(
@@ -354,6 +355,14 @@ class Precure {
     precure.getMetaClass().now = { delegate.find{ it.value.now }.value }
     precure.getMetaClass().slug = { delegate.collect{ it.key } }
     precure.getMetaClass().series = { delegate.collect{ it.value } }
+
+    Precure.metaClass.static.invokeMethod = { name, args ->
+      precure."$name"(*args)
+    }
+
+    Precure.metaClass.static.propertyMissing = { name ->
+      precure."$name"
+    }
   }
 }
 
