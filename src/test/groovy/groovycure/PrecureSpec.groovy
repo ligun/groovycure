@@ -51,7 +51,7 @@ class PrecureSpec extends Specification{
                              new Girl('りぐん','キュアニート','あふれる汗！キュアニート！')]
 
         when:
-        sut[slug] = new Series(title, new Date(), null, girls)
+        sut.add(new Series(slug, title, new Date(), null, girls))
 
         then:
         thrown(UnsupportedOperationException)

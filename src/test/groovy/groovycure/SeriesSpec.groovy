@@ -11,7 +11,9 @@ class SeriesSpec extends Specification {
                                      'りぐん',
                                      'キュアニート','あふれる汗！キュアニート！'
                              )]
-        sut = new Series("アジャイルプリキュア",
+        sut = new Series(
+                "agile",
+                "アジャイルプリキュア",
                 new Date("2014/01/01"),
                 new Date("2015/01/01"),
                 girls

@@ -367,26 +367,25 @@ ${opt.e}
                         'towa':towa,
                 ])
 
-        precure = Collections.unmodifiableMap(
-                new LinkedHashMap<String, Series>(){{
-                    put('unmarked',new Series('ふたりはプリキュア',new Date('2004/2/1'),new Date('2005/1/30'),unmarked_girls))
-                    put('maxheart',new Series('ふたりはプリキュア Max Heart',new Date('2005/2/6'),new Date('2006/1/29'),maxheart_girls))
-                    put('splashstar',new Series('ふたりはプリキュア Splash Star',new Date('2006/2/5'),new Date('2007/1/28'),splashstar_girls))
-                    put('yes',new Series('Yes！プリキュア5',new Date('2007/2/4'),new Date('2008/1/27'),yes_girls))
-                    put('gogo',new Series('Yes！プリキュア5 Go Go！',new Date('2008/2/3'),new Date('2009/1/25'),gogo_girls))
-                    put('fresh',new Series('フレッシュプリキュア',new Date('2009/2/1'),new Date('2010/1/31'),fresh_girls))
-                    put('heartcatch',new Series('ハートキャッチプリキュア',new Date('2010/2/7'),new Date('2011/1/30'),heartcatch_girls))
-                    put('suite',new Series('スイートプリキュア',new Date('2011/2/6'),new Date('2012/2/29'),suite_girls))
-                    put('smile',new Series('スマイルプリキュア',new Date('2012/2/5'),new Date('2013/1/27'),smile_girls))
-                    put('dokidoki',new Series('ドキドキ！プリキュア',new Date('2013/2/3'),new Date('2014/1/26'),dokidoki_girls))
-                    put('happinesscharge',new Series('ハピネスチャージプリキュア',new Date('2014/2/2'),new Date('2015/1/25'),happinesscharge_girls))
-                    put('goprincess',new Series('Go！プリンセスプリキュア',new Date('2015/2/1'),null,goprincess_girls,true))
-                }}
-        )
+        precure = [
+                new Series('unmarked','ふたりはプリキュア',new Date('2004/2/1'),new Date('2005/1/30'),unmarked_girls),
+                new Series('maxheart','ふたりはプリキュア Max Heart',new Date('2005/2/6'),new Date('2006/1/29'),maxheart_girls),
+                new Series('splashstar','ふたりはプリキュア Splash Star',new Date('2006/2/5'),new Date('2007/1/28'),splashstar_girls),
+                new Series('yes','Yes！プリキュア5',new Date('2007/2/4'),new Date('2008/1/27'),yes_girls),
+                new Series('gogo','Yes！プリキュア5 Go Go！',new Date('2008/2/3'),new Date('2009/1/25'),gogo_girls),
+                new Series('fresh','フレッシュプリキュア',new Date('2009/2/1'),new Date('2010/1/31'),fresh_girls),
+                new Series('heartcatch','ハートキャッチプリキュア',new Date('2010/2/7'),new Date('2011/1/30'),heartcatch_girls),
+                new Series('suite','スイートプリキュア',new Date('2011/2/6'),new Date('2012/2/29'),suite_girls),
+                new Series('smile','スマイルプリキュア',new Date('2012/2/5'),new Date('2013/1/27'),smile_girls),
+                new Series('dokidoki','ドキドキ！プリキュア',new Date('2013/2/3'),new Date('2014/1/26'),dokidoki_girls),
+                new Series('happinesscharge','ハピネスチャージプリキュア',new Date('2014/2/2'),new Date('2015/1/25'),happinesscharge_girls),
+                new Series('goprincess','Go！プリンセスプリキュア',new Date('2015/2/1'),null,goprincess_girls,true),
+        ].asImmutable()
 
-        precure.getMetaClass().now = { delegate.find{ it.value.now }.value }
-        precure.getMetaClass().slug = { delegate.collect{ it.key } }
-        precure.getMetaClass().series = { delegate.collect{ it.value } }
+        precure.metaClass.now = { delegate.find{ it.now } }
+        precure.metaClass.slug = { delegate.collect{ it.name } }
+        precure.metaClass.series = { delegate.collect{ it } }
+        precure.metaClass.getProperty = { name -> precure.find{ it.name == name } }
 
         Precure.metaClass.static.invokeMethod = { name, args ->
             precure."$name"(*args)

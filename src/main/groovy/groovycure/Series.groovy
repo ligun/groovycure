@@ -1,13 +1,15 @@
 package groovycure
 
 class Series {
+    private final String name
     private final String title
     private final Date broadcast_from
     private final Date broadcast_to
     private final boolean now = false
     private final Map<String,Girl> girls
 
-    Series(title, broadcast_from, broadcast_to, girls, now = false){
+    Series(name, title, broadcast_from, broadcast_to, girls, now = false){
+        this.name = name
         this.title = title
         this.broadcast_from = broadcast_from
         this.broadcast_to = broadcast_to
