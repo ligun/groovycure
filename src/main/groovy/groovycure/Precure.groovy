@@ -2,13 +2,17 @@ package groovycure
 
 class Precure implements GroovyInterceptable {
     private static final def precure
+    private static final String VERSION = '0.1.0-SNAPSHOT'
+    private static final String DESCRIPTION = 'PreCure(Pretty Cure)'
+
     private Precure() {}
 
     static void main(String... args) {
-        def cli = new CliBuilder(usage:"Precure - Japanese battle heroine -")
+        def cli = new CliBuilder(usage: 'PreCure')
 
         cli.e(argName: 'script', args: 1, 'run script')
         cli.h(longOpt: 'help', 'display to help')
+        cli.v(longOpt: 'version', 'show version')
 
         def opt = cli.parse(args)
 
@@ -23,8 +27,11 @@ ${opt.e}
             )
             return
         }
-        if(opt.h){
+        if(opt.h) {
             cli.usage()
+        }
+        if(opt.v) {
+            println "${DESCRIPTION} Base:groovycure Version:${VERSION}"
         }
     }
 
