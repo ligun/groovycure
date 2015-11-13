@@ -2,7 +2,7 @@ package groovycure
 
 import spock.lang.*
 
-class GirlsSpec extends Specification {
+class GirlSpec extends Specification {
     def sut
     def slug = 'ligun'
     def name = 'りぐん'
