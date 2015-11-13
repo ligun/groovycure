@@ -4,12 +4,13 @@ import spock.lang.*
 
 class GirlsSpec extends Specification {
     def sut
+    def slug = 'ligun'
     def name = 'りぐん'
     def precure_name = 'キュアニート'
     def prologue = 'あふれる汗！キュアニート！'
 
     def setup(){
-        sut = new Girl(name, precure_name, prologue)
+        sut = new Girl(slug, name, precure_name, prologue)
     }
 
     def "変身前の名前テスト"() {

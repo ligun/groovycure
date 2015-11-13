@@ -6,7 +6,7 @@ class Series {
     private final Date broadcast_from
     private final Date broadcast_to
     private final boolean now = false
-    private final Map<String,Girl> girls
+    private final List<Girl> girls
 
     Series(name, title, broadcast_from, broadcast_to, girls, now = false){
         this.name = name
@@ -16,8 +16,10 @@ class Series {
         this.girls = girls
         this.now = now
 
-        girls.getMetaClass().slug = { delegate.collect{ it.key } }
-        girls.getMetaClass().member = { delegate.collect{ it.value } }
+        girls.metaClass.slug = { delegate.collect{ it.slug } }
+        girls.metaClass.member = { delegate.collect{ it.name } }
+        girls.metaClass.getProperty = { property -> delegate.find{ it.slug == property } }
+
     }
 
     @Override

@@ -6,11 +6,11 @@ class SeriesSpec extends Specification {
     def sut;
 
     def setup(){
-        def girls = ['ligun':
-                             new Girl(
-                                     'りぐん',
-                                     'キュアニート','あふれる汗！キュアニート！'
-                             )]
+        def girls = [new Girl(
+                'ligun',
+                'りぐん',
+                'キュアニート','あふれる汗！キュアニート！'
+        )]
         sut = new Series(
                 "agile",
                 "アジャイルプリキュア",
@@ -28,14 +28,6 @@ class SeriesSpec extends Specification {
         title == "アジャイルプリキュア"
     }
 
-    def "Girlsのkeyを取得する"() {
-        when:
-        def girls = sut.girls*.key
-
-        then:
-        girls == ['ligun']
-    }
-
     @Unroll
     def "#propertyの値を変更できない"() {
         when:
@@ -49,7 +41,7 @@ class SeriesSpec extends Specification {
         'title'         | 'アジャイルプリキュア'
         'broadcast_from'| new Date()
         'broadcast_to'  | new Date()
-        'girls'         | ['ligun':new Girl('りぐん','キュアニート','あふれる汗！キュアニート！')]
+        'girls'         | [new Girl('ligun','りぐん','キュアニート','あふれる汗！キュアニート！')]
     }
 
     def "メンバーのslugリストを取得する"() {
@@ -63,9 +55,9 @@ class SeriesSpec extends Specification {
     def "メンバーの名前リストを取得する"() {
         when:
         def member = sut.girls.member()
-        def expected = sut.girls.ligun
+        def expected = ['りぐん']
 
         then:
-        member == [expected]
+        member == expected
     }
 }

@@ -47,8 +47,7 @@ class PrecureSpec extends Specification{
         given:
         def slug = 'agile'
         def title = 'アジャイルプリキュア'
-        def girls = ['ligun':
-                             new Girl('りぐん','キュアニート','あふれる汗！キュアニート！')]
+        def girls = [new Girl('ligun','りぐん','キュアニート','あふれる汗！キュアニート！')]
 
         when:
         sut.add(new Series(slug, title, new Date(), null, girls))
@@ -60,11 +59,10 @@ class PrecureSpec extends Specification{
 
     def "勝手キュアを追加しようとしたら例外が出る"() {
         given:
-        def slug = 'ligun'
-        def girl = new Girl('りぐん','キュアニート','あふれる汗！キュアニート！')
+        def girl = new Girl('ligun','りぐん','キュアニート','あふれる汗！キュアニート！')
 
         when:
-        sut.unmarked.girls.put(slug,girl)
+        sut.unmarked.girls.add(girl)
 
         then:
         thrown(UnsupportedOperationException)
@@ -127,7 +125,7 @@ class PrecureSpec extends Specification{
     @Unroll
     def "#seriesのメンバーは#expectedである"(){
         when:
-        def girls = sut."$series".girls.collect{ it.key }
+        def girls = sut."$series".girls.collect{ it.slug }
 
         then:
         girls == expected
