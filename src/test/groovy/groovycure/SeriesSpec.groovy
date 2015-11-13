@@ -6,11 +6,19 @@ class SeriesSpec extends Specification {
     def sut;
 
     def setup(){
-        def girls = [new Girl(
-                'ligun',
-                'りぐん',
-                'キュアニート','あふれる汗！キュアニート！'
-        )]
+        def girls = [
+                new Girl(
+                        'ligun',
+                        'りぐん',
+                        'キュアニート',
+                        'あふれる汗！キュアニート！'),
+                new Girl(
+                        'gulin',
+                        'ぐりん',
+                        'キュアハケンシャイン',
+                        '罵声浴びる一輪の花！キュアハケンシャイン！')
+
+        ]
         sut = new Series(
                 "agile",
                 "アジャイルプリキュア",
@@ -49,15 +57,28 @@ class SeriesSpec extends Specification {
         def slug = sut.girls.slug()
 
         then:
-        slug == ['ligun']
+        slug == ['ligun','gulin']
     }
 
     def "メンバーの名前リストを取得する"() {
         when:
         def member = sut.girls.member()
-        def expected = ['りぐん']
+        def expected = ['りぐん','ぐりん']
 
         then:
         member == expected
+    }
+
+    def "全員変身する"() {
+        when:
+        sut.transformAll()
+
+        then:
+        sut.girls.each{ assert it.transformed == true }
+    }
+
+    def "全員変身時みんながしゃべる"() {
+        expect:
+        sut.transformAll() == 'あふれる汗！キュアニート！\n罵声浴びる一輪の花！キュアハケンシャイン！'
     }
 }

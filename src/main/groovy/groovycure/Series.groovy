@@ -22,6 +22,10 @@ class Series {
 
     }
 
+    String transformAll() {
+        girls.collect{ it.transform() }.join('\n')
+    }
+
     @Override
     String toString(){
         this.title
