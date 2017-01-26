@@ -11,7 +11,7 @@ class PrecureSpec extends Specification{
 
         then:
         slug == ['unmarked','maxheart','splashstar','yes','gogo',
-                 'fresh','heartcatch','suite','smile','dokidoki','happinesscharge','goprincess']
+                 'fresh','heartcatch','suite','smile','dokidoki','happinesscharge','goprincess', 'mahotsukai']
     }
 
     def "シリーズが順番通り取得できる"() {
@@ -31,7 +31,8 @@ class PrecureSpec extends Specification{
                 'スマイルプリキュア',
                 'ドキドキ！プリキュア',
                 'ハピネスチャージプリキュア',
-                'Go！プリンセスプリキュア'
+                'Go！プリンセスプリキュア',
+                '魔法使いプリキュア',
         ]
     }
 
@@ -40,7 +41,7 @@ class PrecureSpec extends Specification{
         def current = sut.now()
 
         then:
-        current.toString() == 'Go！プリンセスプリキュア'
+        current.toString() == '魔法使いプリキュア'
     }
 
     def "勝手シリーズを追加しようとしたら例外が出る"() {
@@ -144,6 +145,7 @@ class PrecureSpec extends Specification{
         'dokidoki'         || ['mana', 'rikka', 'arisu', 'makoto', 'aguri']
         'happinesscharge'  || ['megumi', 'hime', 'yuuko', 'iona']
         'goprincess'       || ['haruka', 'minami', 'kirara', 'towa']
+        'mahotsukai'       || ['mirai', 'riko', 'kotoha']
     }
 
     def "precureプロパティを使用せずにPrecureクラスから直接動作できる"() {

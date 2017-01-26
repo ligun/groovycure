@@ -319,6 +319,27 @@ ${opt.e}
                 '真紅の炎のプリンセス！キュアスカーレット！'
         )
 
+        def mirai = new Girl(
+                        'mirai',
+                        '朝比奈みらい',
+                        'キュアミラクル',
+                        'ふたりの奇跡！キュアミラクル'
+                )
+
+        def riko = new Girl(
+                        'riko',
+                        '十六夜リコ',
+                        'キュアマジカル',
+                        'ふたりの魔法！キュアマジカル！'
+                )
+
+        def kotoha = new Girl(
+                        'kotoha',
+                        '花海ことは',
+                        'キュアフェリーチェ',
+                        'あまねく生命に祝福を！キュアフェリーチェ！'
+                )
+
         def unmarked_girls =
                 [
                         nagisa,
@@ -415,6 +436,13 @@ ${opt.e}
                         towa,
                 ].asImmutable()
 
+        def mahotsukai_girls =
+                [
+                        mirai,
+                        riko,
+                        kotoha,
+                ]
+
         precure = [
                 new Series('unmarked','ふたりはプリキュア',new Date('2004/2/1'),new Date('2005/1/30'),unmarked_girls),
                 new Series('maxheart','ふたりはプリキュア Max Heart',new Date('2005/2/6'),new Date('2006/1/29'),maxheart_girls),
@@ -427,7 +455,8 @@ ${opt.e}
                 new Series('smile','スマイルプリキュア',new Date('2012/2/5'),new Date('2013/1/27'),smile_girls),
                 new Series('dokidoki','ドキドキ！プリキュア',new Date('2013/2/3'),new Date('2014/1/26'),dokidoki_girls),
                 new Series('happinesscharge','ハピネスチャージプリキュア',new Date('2014/2/2'),new Date('2015/1/25'),happinesscharge_girls),
-                new Series('goprincess','Go！プリンセスプリキュア',new Date('2015/2/1'),null,goprincess_girls,true),
+                new Series('goprincess','Go！プリンセスプリキュア',new Date('2015/2/1'),null,goprincess_girls),
+                new Series('mahotsukai','魔法使いプリキュア',new Date('2016/2/7'),null,mahotsukai_girls,true),
         ].asImmutable()
 
         precure.metaClass.now = { delegate.find{ it.now } }
@@ -444,4 +473,3 @@ ${opt.e}
         }
     }
 }
-
