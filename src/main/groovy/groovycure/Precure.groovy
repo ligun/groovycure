@@ -340,6 +340,13 @@ ${opt.e}
                         'あまねく生命に祝福を！キュアフェリーチェ！'
                 )
 
+        def ichika = new Girl(
+                        'ichika',
+                        '宇佐美いちか',
+                        'キュアホイップ',
+                        '元気と笑顔を！レッツ・ラ・まぜまぜ！キュアホイップ！できあがり！'
+                )
+
         def unmarked_girls =
                 [
                         nagisa,
@@ -441,7 +448,12 @@ ${opt.e}
                         mirai,
                         riko,
                         kotoha,
-                ]
+                ].asImmutable()
+
+        def kirakira_girls =
+                [
+                        ichika,
+                ].asImmutable()
 
         precure = [
                 new Series('unmarked','ふたりはプリキュア',new Date('2004/2/1'),new Date('2005/1/30'),unmarked_girls),
@@ -455,8 +467,9 @@ ${opt.e}
                 new Series('smile','スマイルプリキュア',new Date('2012/2/5'),new Date('2013/1/27'),smile_girls),
                 new Series('dokidoki','ドキドキ！プリキュア',new Date('2013/2/3'),new Date('2014/1/26'),dokidoki_girls),
                 new Series('happinesscharge','ハピネスチャージプリキュア',new Date('2014/2/2'),new Date('2015/1/25'),happinesscharge_girls),
-                new Series('goprincess','Go！プリンセスプリキュア',new Date('2015/2/1'),null,goprincess_girls),
-                new Series('mahotsukai','魔法使いプリキュア',new Date('2016/2/7'),null,mahotsukai_girls,true),
+                new Series('goprincess','Go！プリンセスプリキュア',new Date('2015/2/1'),new Date('2016/1/31'),goprincess_girls),
+                new Series('mahotsukai','魔法使いプリキュア',new Date('2016/2/7'),new Date('2017/1/29'),mahotsukai_girls),
+                new Series('kirakira','キラキラ☆プリキュアアラモード',new Date('2017/2/5'),null,kirakira_girls,true)
         ].asImmutable()
 
         precure.metaClass.now = { delegate.find{ it.now } }
