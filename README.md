@@ -15,7 +15,7 @@ Groovycure library is a implementation of Precure by Groovy.
 ### Installation
 Use Grape in Groovy script file.
 ```groovy
-@Grab('groovycure:groovycure')
+@Grab('groovycure:groovycure:0.0.8')
 ```
 
 Or install it using Gradle
@@ -24,7 +24,7 @@ repositories {
   jcenter()
 }
 dependencies {
-  compile 'groovycure:groovycure:+'
+  compile 'groovycure:groovycure:0.0.8'
 }
 ```
 
@@ -32,25 +32,27 @@ dependencies {
 Run with Grape
 ```groovy
 @Grab('groovycure:groovycure')
-import static groovycure.Precure.precure
+import groovycure.Precure
 
-println precure.now()
+println Precure.now()
 ```
 
 Or run with Gradle
 ```groovy
-import static groovycure.Precure.precure
+import groovycure.Precure
 
-println precure.now()
+println Precure.now()
 ```
 If you execute groovycure in groovysh
 ```groovy
 $ groovysh
 
 > groovy.grape.Grape.grab(group:'groovycure',module:'groovycure')
-> import static grooycure.Precure.precure
+> import grooycure.Precure
 >
-> Precure.precure.now()
+> println Precure.now()
+
+===> キラキラ☆プリキュアアラモード
 ```
 
 ## precure command
