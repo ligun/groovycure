@@ -88,3 +88,34 @@ option | description
 $ precure -e "prinntln Precure.now()"
 キラキラ☆プリキュアアラモード
 ```
+
+## Release Note
+### 0.0.8
+* Support キラキラ☆プリキュアアラモード
+
+### 0.0.7
+* Support 魔法使いプリキュア
+* Change Series and Girls object to List from Map
+* Change that Precure class behaves as an instance
+* Add transformAll method to Girls class
+* Add detransform method to Girls class
+* Support "precure" shell command
+
+### 0.0.6
+* Add all of goprincess girls
+
+### 0.0.5
+* Bug fix (Add transform message to CureFlora)
+
+### 0.0.4
+* Support Go!プリンセスプリキュア
+
+### 0.0.3
+* Change so that girls object can not modified arbitrarily
+
+### 0.0.2
+* Sort by broadcast order of series
+* Change so that series object can not modified arbitrarily
+
+### 0.0.1
+* First release
