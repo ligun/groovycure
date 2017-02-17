@@ -10,6 +10,7 @@ class Precure implements GroovyInterceptable {
     static void main(String... args) {
         def cli = new CliBuilder(usage: 'PreCure')
 
+        cli.a(longOpt: 'all', 'show all Precure information')
         cli.e(argName: 'script', args: 1, 'run script')
         cli.h(longOpt: 'help', 'display to help')
         cli.v(longOpt: 'version', 'show version')
@@ -17,6 +18,20 @@ class Precure implements GroovyInterceptable {
         def opt = cli.parse(args)
 
         if(!opt) return
+
+        if(opt.a){
+          Precure.series().each{series->
+            println series.title
+            println "  - 放送開始：${series.broadcast_from.format('yyyy/MM/dd')}"
+            println "  - 放送終了：${series.broadcast_to?.format('yyyy/MM/dd')?:'On air'}"
+            println "  - プリキュア："
+            series.girls.each{girls->
+              println "    * ${girls.name}(${girls.precure_name})"
+              girls.prologue.split('\n').each{println "      $it"}
+            }
+            println()
+          }
+        }
 
         if(opt.e){
             def shell = new GroovyShell(Precure.classLoader)

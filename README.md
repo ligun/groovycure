@@ -77,11 +77,12 @@ cp ./build/scripts/precure /usr/local/bin
 
 ### Usage
 #### Option
-option | description
--------|------------
--e     | Execute Groovy script with imported groovycure
--v     | Display precure commad version
--h     | Display help
+option | full name | description
+-------|-----------|------------
+-a     | --all     | Display all Precure information
+-e     |           | Execute Groovy script with imported groovycure
+-v     | --version | Display precure commad version
+-h     | --help    | Display help
 
 ### Example
 ```bash
