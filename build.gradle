@@ -1,15 +1,9 @@
-apply plugin: 'groovy'
-apply plugin: 'maven'
-apply plugin: 'idea'
-apply plugin: 'application'
-
-/*
 plugins {
-  id 'groovy'
-  id 'maven'
-  id 'com.jfrog.bintray' version '1.0'
+    id 'groovy'
+    id 'maven-publish'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '5.0.0'
 }
-*/
 
 archivesBaseName = 'groovycure'
 group = 'groovycure'
@@ -21,66 +15,42 @@ repositories {
 }
 
 dependencies {
-    compile module('org.codehaus.groovy:groovy-all:2.3.2') {
+    implementation module('org.codehaus.groovy:groovy-all:2.3.2') {
         dependency('commons-cli:commons-cli:1.2')
     }
-    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+    testImplementation 'org.spockframework:spock-core:0.7-groovy-2.0'
 }
 
-task javadocJar(type: Jar, dependsOn: groovydoc) {
-    classifier = 'javadoc'
-    from groovydoc.destinationDir
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allSource
-    classifier = 'sources'
+javadoc {
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
 }
 
-artifacts {
-    archives jar
-    archives javadocJar
-    archives sourcesJar
-}
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: "file:${buildDir}")
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
             pom {
-                project {
-                    inceptionYear '2015'
-                    packaging 'jar'
-                    licenses {
-                        license {
-                            name 'The MIT License'
-                            url 'http://opensource.org/licenses/MIT'
-                            distribution 'repo'
-                        }
+                licenses {
+                    license {
+                        name = 'The MIT License'
+                        url = 'http://opensource.org/licenses/MIT'
+                        distribution = 'repo'
                     }
                 }
             }
         }
     }
-}
-
-task getDir << {
-    println new File(System.getProperty('user.home'), '.gradle/cache/groovycure').absolutePath
-}
-
-install.doFirst {
-    def dir = null
-
-    dir = new File(System.getProperty('user.home'), '.gradle/cache/groovycure').absolutePath
-    if( new File(dir).exists() ){
-        ant.echo("Remove gradle-cache-dir : ${dir}")
-        ant.delete(dir:dir)
-    }
-
-    dir = new File(System.getProperty('user.home'), '.groovy/grapes/groovycure').absolutePath
-    if( new File(dir).exists() ){
-        ant.echo("Remove gradle-cache-dir : ${dir}")
-        ant.delete(dir:dir)
+    repositories {
+        maven {
+            url "file:${buildDir}"
+        }
     }
 }
 
@@ -90,23 +60,17 @@ run {
     }
 }
 
-task jarsh(type: Jar, dependsOn: jar) {
-    baseName = "${project.name}-fullpack"
-
+task makeExecutableJar(type: Jar, dependsOn: shadowJar) {
     manifest {
         attributes 'Main-Class': 'groovycure.Precure'
     }
-    from configurations.compile.collect{ it.isDirectory()? it : zipTree(it) }
-    from "$buildDir/classes/main"
-    from "$buildDir/resources/main"
-
     doLast {
         def jarshDir = new File("${buildDir}/jarsh")
         jarshDir.mkdir()
 
         def shell = new File("${jarshDir}/precure")
         def bat = new File("${jarshDir}/precure.bat")
-        def jar = new File("${buildDir}/libs/${baseName}-${version}.jar")
+        def jar = new File("${buildDir}/libs/${archivesBaseName}-${version}-all.jar")
 
         shell.text = """\
 #!/bin/sh
