@@ -397,6 +397,41 @@ ${opt.e}
                 '夢と希望を！レッツ・ラ・まぜまぜ！キュアパルフェ！できあがり！'
         )
 
+        def hana = new Girl(
+                'hana',
+                '野乃はな',
+                'キュアエール',
+                'みんなを応援！元気のプリキュア！キュアエール！',
+        )
+
+        def saaya = new Girl(
+                'saaya',
+                '薬師寺さあや',
+                'キュアアンジュ',
+                'みんなを癒やす！知恵のプリキュア！キュアアンジュ！',
+        )
+
+        def homare = new Girl(
+                'homare',
+                '輝木ほまれ',
+                'キュアエトワール',
+                'みんな輝け！力のプリキュア！キュアエトワール！',
+        )
+
+        def emiru = new Girl(
+                'emiru',
+                '愛崎えみる',
+                'キュアマシェリ',
+                'みんな大好き！愛のプリキュア！キュアマシェリ！',
+        )
+
+        def amour = new Girl(
+                'amour',
+                'ルールーアムール',
+                'キュアアムール',
+                'みんな大好き！愛のプリキュア！キュアアムール！',
+        )
+
         def unmarked_girls =
                 [
                         nagisa,
@@ -510,6 +545,15 @@ ${opt.e}
                         shieru,
                 ].asImmutable()
 
+        def hugtto_girls =
+                [
+                        hana,
+                        saaya,
+                        homare,
+                        emiru,
+                        amour,
+                ].asImmutable()
+
         precure = [
                 new Series('unmarked','ふたりはプリキュア',new Date('2004/2/1'),new Date('2005/1/30'),unmarked_girls),
                 new Series('maxheart','ふたりはプリキュア Max Heart',new Date('2005/2/6'),new Date('2006/1/29'),maxheart_girls),
@@ -524,7 +568,8 @@ ${opt.e}
                 new Series('happinesscharge','ハピネスチャージプリキュア',new Date('2014/2/2'),new Date('2015/1/25'),happinesscharge_girls),
                 new Series('goprincess','Go！プリンセスプリキュア',new Date('2015/2/1'),new Date('2016/1/31'),goprincess_girls),
                 new Series('mahotsukai','魔法使いプリキュア',new Date('2016/2/7'),new Date('2017/1/29'),mahotsukai_girls),
-                new Series('kirakira','キラキラ☆プリキュアアラモード',new Date('2017/2/5'),null,kirakira_girls,true)
+                new Series('kirakira','キラキラ☆プリキュアアラモード',new Date('2017/2/5'),new Date('2018/1/28'),kirakira_girls),
+                new Series('hugtto','HUGっと！プリキュア',new Date('2018/2/4'),null,hugtto_girls,true),
         ].asImmutable()
 
         precure.metaClass.now = { delegate.find{ it.now } }
