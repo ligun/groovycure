@@ -12,7 +12,7 @@ class PrecureSpec extends Specification{
         then:
         slug == ['unmarked','maxheart','splashstar','yes','gogo',
                  'fresh','heartcatch','suite','smile','dokidoki',
-                 'happinesscharge','goprincess', 'mahotsukai', 'kirakira', 'hugtto']
+                 'happinesscharge','goprincess', 'mahotsukai', 'kirakira', 'hugtto', 'startwinkle']
     }
 
     def "シリーズが順番通り取得できる"() {
@@ -36,6 +36,7 @@ class PrecureSpec extends Specification{
                 '魔法使いプリキュア',
                 'キラキラ☆プリキュアアラモード',
                 'HUGっと！プリキュア',
+                'スター☆トゥインクルプリキュア',
         ]
     }
 
@@ -44,7 +45,7 @@ class PrecureSpec extends Specification{
         def current = sut.now()
 
         then:
-        current.toString() == 'HUGっと！プリキュア'
+        current.toString() == 'スター☆トゥインクルプリキュア'
     }
 
     def "勝手シリーズを追加しようとしたら例外が出る"() {
@@ -86,6 +87,7 @@ class PrecureSpec extends Specification{
         'goprincess'      |  '2015/02/01'
         'kirakira'        |  '2017/02/05'
         'hugtto'          |  '2018/02/04'
+        'startwinkle'     |  '2019/02/03'
     }
 
     @Unroll
@@ -101,6 +103,7 @@ class PrecureSpec extends Specification{
         'unmarked'        |  '2005/01/30'
         'happinesscharge' |  '2015/01/25'
         'kirakira'        |  '2018/01/28'
+        'hugtto'          |  '2019/01/27'
     }
 
     def "放映中のシリーズの放送終了日は設定されていない"() {
@@ -154,6 +157,7 @@ class PrecureSpec extends Specification{
         'mahotsukai'       || ['mirai', 'riko', 'kotoha']
         'kirakira'         || ['ichika', 'himari', 'aoi', 'yukari', 'akira', 'shieru']
         'hugtto'           || ['hana', 'saaya', 'homare', 'emiru', 'amour']
+        'startwinkle'      || ['hikaru', 'rara', 'erena', 'madoka', 'yuni']
     }
 
     def "precureプロパティを使用せずにPrecureクラスから直接動作できる"() {
