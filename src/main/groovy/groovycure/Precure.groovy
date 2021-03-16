@@ -466,6 +466,34 @@ ${opt.e}
                 '銀河に光る虹色のスペクトル！キュアコスモ！',
         )
 
+        def nodoka = new Girl(
+                'nodoka',
+                '花寺のどか',
+                'キュアグレース',
+                '重なる二つの花！キュアグレース！',
+        )
+
+        def chiyu = new Girl(
+                'chiyu',
+                '沢泉ちゆ',
+                'キュアフォンテーヌ',
+                '交わる二つの流れ、キュアフォンテーヌ！',
+        )
+
+        def hinata = new Girl(
+                'hinata',
+                '平光ひなた',
+                'キュアスパークル',
+                '溶け合う二つの光、キュアスパークル！',
+        )
+
+        def asumi = new Girl(
+                'asumi',
+                '風鈴アスミ',
+                'キュアアース',
+                '時を経てつながる二つの風、キュアアース！',
+        )
+
         def unmarked_girls =
                 [
                         nagisa,
@@ -595,9 +623,17 @@ ${opt.e}
                         erena,
                         madoka,
                         yuni,
-                ]
+                ].asImmutable()
 
-        precure = [
+        def healingood_girls =
+                [
+                        nodoka,
+                        chiyu,
+                        hinata,
+                        asumi,
+                ].asImmutable()
+
+            precure = [
                 new Series('unmarked','ふたりはプリキュア',new Date('2004/2/1'),new Date('2005/1/30'),unmarked_girls),
                 new Series('maxheart','ふたりはプリキュア Max Heart',new Date('2005/2/6'),new Date('2006/1/29'),maxheart_girls),
                 new Series('splashstar','ふたりはプリキュア Splash Star',new Date('2006/2/5'),new Date('2007/1/28'),splashstar_girls),
@@ -613,7 +649,8 @@ ${opt.e}
                 new Series('mahotsukai','魔法使いプリキュア',new Date('2016/2/7'),new Date('2017/1/29'),mahotsukai_girls),
                 new Series('kirakira','キラキラ☆プリキュアアラモード',new Date('2017/2/5'),new Date('2018/1/28'),kirakira_girls),
                 new Series('hugtto','HUGっと！プリキュア',new Date('2018/2/4'),new Date('2019/1/27'),hugtto_girls),
-                new Series('startwinkle','スター☆トゥインクルプリキュア',new Date('2019/2/3'),null,startwinkle_girls,true),
+                new Series('startwinkle','スター☆トゥインクルプリキュア',new Date('2019/2/3'),new Date('2020/01/26'),startwinkle_girls),
+                new Series('healingood','ヒーリングっど♥プリキュア',new Date('2020/2/2'),null,healingood_girls,true),
         ].asImmutable()
 
         precure.metaClass.now = { delegate.find{ it.now } }
