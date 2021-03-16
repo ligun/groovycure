@@ -362,6 +362,41 @@ ${opt.e}
                         '元気と笑顔を！レッツ・ラ・まぜまぜ！キュアホイップ！できあがり！'
                 )
 
+        def himari = new Girl(
+                'himari',
+                '有栖川ひまり',
+                'キュアカスタード',
+                '知性と勇気を！レッツ・ラ・まぜまぜ！キュアカスタード！できあがり！'
+        )
+
+        def aoi = new Girl(
+                'aoi',
+                '立神あおい',
+                'キュアジェラード',
+                '自由と情熱を！レッツ・ラ・まぜまぜ！キュアジェラード！できあがり！'
+        )
+
+        def yukari = new Girl(
+                'yukari',
+                '琴爪ゆかり',
+                'キュアマカロン',
+                '美しさとときめきを！レッツ・ラ・まぜまぜ！キュアマカロン！できあがり！'
+        )
+
+        def akira = new Girl(
+                'akira',
+                '剣城あきら',
+                'キュアショコラ',
+                '強さと愛を！レッツ・ラ・まぜまぜ！キュアショコラ！できあがり！'
+        )
+
+        def shieru = new Girl(
+                'shieru',
+                'キラ星シエル',
+                'キュアパルフェ',
+                '夢と希望を！レッツ・ラ・まぜまぜ！キュアパルフェ！できあがり！'
+        )
+
         def unmarked_girls =
                 [
                         nagisa,
@@ -468,6 +503,11 @@ ${opt.e}
         def kirakira_girls =
                 [
                         ichika,
+                        himari,
+                        aoi,
+                        yukari,
+                        akira,
+                        shieru,
                 ].asImmutable()
 
         precure = [

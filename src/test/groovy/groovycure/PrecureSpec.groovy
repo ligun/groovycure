@@ -148,7 +148,7 @@ class PrecureSpec extends Specification{
         'happinesscharge'  || ['megumi', 'hime', 'yuuko', 'iona']
         'goprincess'       || ['haruka', 'minami', 'kirara', 'towa']
         'mahotsukai'       || ['mirai', 'riko', 'kotoha']
-        'kirakira'         || ['ichika']
+        'kirakira'         || ['ichika', 'himari', 'aoi', 'yukari', 'akira', 'shieru']
     }
 
     def "precureプロパティを使用せずにPrecureクラスから直接動作できる"() {
