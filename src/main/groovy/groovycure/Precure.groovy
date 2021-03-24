@@ -494,6 +494,27 @@ ${opt.e}
                 '時を経てつながる二つの風、キュアアース！',
         )
 
+        def manatsu = new Girl(
+            'manatsu',
+            '夏海まなつ',
+            'キュアサマー',
+            'ときめく常夏！キュアサマー！',
+        )
+
+        def sango = new Girl(
+            'sango',
+            '涼村さんご',
+            'キュアコーラル',
+            'きらめく宝石！キュアコーラル！',
+        )
+
+        def minori = new Girl(
+            'minori',
+            '一ノ瀬みのり',
+            'キュアパパイア',
+            'ひらめく果実！キュアパパイア！',
+        )
+
         def unmarked_girls =
                 [
                         nagisa,
@@ -633,6 +654,13 @@ ${opt.e}
                         asumi,
                 ].asImmutable()
 
+            def tropicalrouge_girls =
+                [
+                        manatsu,
+                        sango,
+                        minori,
+                ].asImmutable()
+
             precure = [
                 new Series('unmarked','ふたりはプリキュア',new Date('2004/2/1'),new Date('2005/1/30'),unmarked_girls),
                 new Series('maxheart','ふたりはプリキュア Max Heart',new Date('2005/2/6'),new Date('2006/1/29'),maxheart_girls),
@@ -650,7 +678,8 @@ ${opt.e}
                 new Series('kirakira','キラキラ☆プリキュアアラモード',new Date('2017/2/5'),new Date('2018/1/28'),kirakira_girls),
                 new Series('hugtto','HUGっと！プリキュア',new Date('2018/2/4'),new Date('2019/1/27'),hugtto_girls),
                 new Series('startwinkle','スター☆トゥインクルプリキュア',new Date('2019/2/3'),new Date('2020/01/26'),startwinkle_girls),
-                new Series('healingood','ヒーリングっど♥プリキュア',new Date('2020/2/2'),null,healingood_girls,true),
+                new Series('healingood','ヒーリングっど♥プリキュア',new Date('2020/2/2'),new Date('2021/2/21'),healingood_girls),
+                new Series('tropicalrouge','トロピカル～ジュ！プリキュア',new Date('2021/2/28'),null,tropicalrouge_girls,true),
         ].asImmutable()
 
         precure.metaClass.now = { delegate.find{ it.now } }
