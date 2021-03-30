@@ -17,23 +17,23 @@ class Precure implements GroovyInterceptable {
 
         def opt = cli.parse(args)
 
-        if(!opt) return
+        if (!opt) return
 
-        if(opt.a){
-          Precure.series().each{series->
-            println series.title
-            println "  - 放送開始：${series.broadcast_from.format('yyyy/MM/dd')}"
-            println "  - 放送終了：${series.broadcast_to?.format('yyyy/MM/dd')?:'On air'}"
-            println "  - プリキュア："
-            series.girls.each{girls->
-              println "    * ${girls.name}(${girls.precure_name})"
-              girls.prologue.split('\n').each{println "      $it"}
+        if (opt.a) {
+            Precure.series().each { series ->
+                println series.title
+                println "  - 放送開始：${series.broadcast_from.format('yyyy/MM/dd')}"
+                println "  - 放送終了：${series.broadcast_to?.format('yyyy/MM/dd') ?: 'On air'}"
+                println "  - プリキュア："
+                series.girls.each { girls ->
+                    println "    * ${girls.name}(${girls.precure_name})"
+                    girls.prologue.split('\n').each { println "      $it" }
+                }
+                println()
             }
-            println()
-          }
         }
 
-        if(opt.e){
+        if (opt.e) {
             def shell = new GroovyShell(Precure.classLoader)
             shell.evaluate("""\
 import groovycure.Precure
@@ -42,10 +42,10 @@ ${opt.e}
             )
             return
         }
-        if(opt.h) {
+        if (opt.h) {
             cli.usage()
         }
-        if(opt.v) {
+        if (opt.v) {
             println "${DESCRIPTION} Base:groovycure Version:${VERSION}"
         }
     }
@@ -235,7 +235,7 @@ ${opt.e}
                 'yayoi',
                 '黄瀬やよい',
                 'キュアピース',
-                "ピカピカぴかりんじゃんけんポン！(${->def num=new Random().nextInt(3);num==0?'グー':(num==1?'チョキ':'パー')}) キュアピース！"
+                "ピカピカぴかりんじゃんけんポン！(${-> def num = new Random().nextInt(3); num == 0 ? 'グー' : (num == 1 ? 'チョキ' : 'パー')}) キュアピース！"
         )
         def nao = new Girl(
                 'nao',
@@ -335,32 +335,32 @@ ${opt.e}
         )
 
         def mirai = new Girl(
-                        'mirai',
-                        '朝比奈みらい',
-                        'キュアミラクル',
-                        'ふたりの奇跡！キュアミラクル'
-                )
+                'mirai',
+                '朝比奈みらい',
+                'キュアミラクル',
+                'ふたりの奇跡！キュアミラクル'
+        )
 
         def riko = new Girl(
-                        'riko',
-                        '十六夜リコ',
-                        'キュアマジカル',
-                        'ふたりの魔法！キュアマジカル！'
-                )
+                'riko',
+                '十六夜リコ',
+                'キュアマジカル',
+                'ふたりの魔法！キュアマジカル！'
+        )
 
         def kotoha = new Girl(
-                        'kotoha',
-                        '花海ことは',
-                        'キュアフェリーチェ',
-                        'あまねく生命に祝福を！キュアフェリーチェ！'
-                )
+                'kotoha',
+                '花海ことは',
+                'キュアフェリーチェ',
+                'あまねく生命に祝福を！キュアフェリーチェ！'
+        )
 
         def ichika = new Girl(
-                        'ichika',
-                        '宇佐美いちか',
-                        'キュアホイップ',
-                        '元気と笑顔を！レッツ・ラ・まぜまぜ！キュアホイップ！できあがり！'
-                )
+                'ichika',
+                '宇佐美いちか',
+                'キュアホイップ',
+                '元気と笑顔を！レッツ・ラ・まぜまぜ！キュアホイップ！できあがり！'
+        )
 
         def himari = new Girl(
                 'himari',
@@ -495,31 +495,31 @@ ${opt.e}
         )
 
         def manatsu = new Girl(
-            'manatsu',
-            '夏海まなつ',
-            'キュアサマー',
-            'ときめく常夏！キュアサマー！',
+                'manatsu',
+                '夏海まなつ',
+                'キュアサマー',
+                'ときめく常夏！キュアサマー！',
         )
 
         def sango = new Girl(
-            'sango',
-            '涼村さんご',
-            'キュアコーラル',
-            'きらめく宝石！キュアコーラル！',
+                'sango',
+                '涼村さんご',
+                'キュアコーラル',
+                'きらめく宝石！キュアコーラル！',
         )
 
         def minori = new Girl(
-            'minori',
-            '一ノ瀬みのり',
-            'キュアパパイア',
-            'ひらめく果実！キュアパパイア！',
+                'minori',
+                '一ノ瀬みのり',
+                'キュアパパイア',
+                'ひらめく果実！キュアパパイア！',
         )
 
         def asuka = new Girl(
-            'asuka',
-            '滝沢あすか',
-            'キュアフラミンゴ',
-            'はためく翼！キュアフラミンゴ！'
+                'asuka',
+                '滝沢あすか',
+                'キュアフラミンゴ',
+                'はためく翼！キュアフラミンゴ！'
         )
 
         def unmarked_girls =
@@ -661,7 +661,7 @@ ${opt.e}
                         asumi,
                 ].asImmutable()
 
-            def tropicalrouge_girls =
+        def tropicalrouge_girls =
                 [
                         manatsu,
                         sango,
@@ -669,31 +669,31 @@ ${opt.e}
                         asuka,
                 ].asImmutable()
 
-            precure = [
-                new Series('unmarked','ふたりはプリキュア',new Date('2004/2/1'),new Date('2005/1/30'),unmarked_girls),
-                new Series('maxheart','ふたりはプリキュア Max Heart',new Date('2005/2/6'),new Date('2006/1/29'),maxheart_girls),
-                new Series('splashstar','ふたりはプリキュア Splash Star',new Date('2006/2/5'),new Date('2007/1/28'),splashstar_girls),
-                new Series('yes','Yes！プリキュア5',new Date('2007/2/4'),new Date('2008/1/27'),yes_girls),
-                new Series('gogo','Yes！プリキュア5 Go Go！',new Date('2008/2/3'),new Date('2009/1/25'),gogo_girls),
-                new Series('fresh','フレッシュプリキュア',new Date('2009/2/1'),new Date('2010/1/31'),fresh_girls),
-                new Series('heartcatch','ハートキャッチプリキュア',new Date('2010/2/7'),new Date('2011/1/30'),heartcatch_girls),
-                new Series('suite','スイートプリキュア',new Date('2011/2/6'),new Date('2012/2/29'),suite_girls),
-                new Series('smile','スマイルプリキュア',new Date('2012/2/5'),new Date('2013/1/27'),smile_girls),
-                new Series('dokidoki','ドキドキ！プリキュア',new Date('2013/2/3'),new Date('2014/1/26'),dokidoki_girls),
-                new Series('happinesscharge','ハピネスチャージプリキュア',new Date('2014/2/2'),new Date('2015/1/25'),happinesscharge_girls),
-                new Series('goprincess','Go！プリンセスプリキュア',new Date('2015/2/1'),new Date('2016/1/31'),goprincess_girls),
-                new Series('mahotsukai','魔法使いプリキュア',new Date('2016/2/7'),new Date('2017/1/29'),mahotsukai_girls),
-                new Series('kirakira','キラキラ☆プリキュアアラモード',new Date('2017/2/5'),new Date('2018/1/28'),kirakira_girls),
-                new Series('hugtto','HUGっと！プリキュア',new Date('2018/2/4'),new Date('2019/1/27'),hugtto_girls),
-                new Series('startwinkle','スター☆トゥインクルプリキュア',new Date('2019/2/3'),new Date('2020/01/26'),startwinkle_girls),
-                new Series('healingood','ヒーリングっど♥プリキュア',new Date('2020/2/2'),new Date('2021/2/21'),healingood_girls),
-                new Series('tropicalrouge','トロピカル～ジュ！プリキュア',new Date('2021/2/28'),null,tropicalrouge_girls,true),
+        precure = [
+                new Series('unmarked', 'ふたりはプリキュア', new Date('2004/2/1'), new Date('2005/1/30'), unmarked_girls),
+                new Series('maxheart', 'ふたりはプリキュア Max Heart', new Date('2005/2/6'), new Date('2006/1/29'), maxheart_girls),
+                new Series('splashstar', 'ふたりはプリキュア Splash Star', new Date('2006/2/5'), new Date('2007/1/28'), splashstar_girls),
+                new Series('yes', 'Yes！プリキュア5', new Date('2007/2/4'), new Date('2008/1/27'), yes_girls),
+                new Series('gogo', 'Yes！プリキュア5 Go Go！', new Date('2008/2/3'), new Date('2009/1/25'), gogo_girls),
+                new Series('fresh', 'フレッシュプリキュア', new Date('2009/2/1'), new Date('2010/1/31'), fresh_girls),
+                new Series('heartcatch', 'ハートキャッチプリキュア', new Date('2010/2/7'), new Date('2011/1/30'), heartcatch_girls),
+                new Series('suite', 'スイートプリキュア', new Date('2011/2/6'), new Date('2012/2/29'), suite_girls),
+                new Series('smile', 'スマイルプリキュア', new Date('2012/2/5'), new Date('2013/1/27'), smile_girls),
+                new Series('dokidoki', 'ドキドキ！プリキュア', new Date('2013/2/3'), new Date('2014/1/26'), dokidoki_girls),
+                new Series('happinesscharge', 'ハピネスチャージプリキュア', new Date('2014/2/2'), new Date('2015/1/25'), happinesscharge_girls),
+                new Series('goprincess', 'Go！プリンセスプリキュア', new Date('2015/2/1'), new Date('2016/1/31'), goprincess_girls),
+                new Series('mahotsukai', '魔法使いプリキュア', new Date('2016/2/7'), new Date('2017/1/29'), mahotsukai_girls),
+                new Series('kirakira', 'キラキラ☆プリキュアアラモード', new Date('2017/2/5'), new Date('2018/1/28'), kirakira_girls),
+                new Series('hugtto', 'HUGっと！プリキュア', new Date('2018/2/4'), new Date('2019/1/27'), hugtto_girls),
+                new Series('startwinkle', 'スター☆トゥインクルプリキュア', new Date('2019/2/3'), new Date('2020/01/26'), startwinkle_girls),
+                new Series('healingood', 'ヒーリングっど♥プリキュア', new Date('2020/2/2'), new Date('2021/2/21'), healingood_girls),
+                new Series('tropicalrouge', 'トロピカル～ジュ！プリキュア', new Date('2021/2/28'), null, tropicalrouge_girls, true),
         ].asImmutable()
 
-        precure.metaClass.now = { delegate.find{ it.now } }
-        precure.metaClass.slug = { delegate.collect{ it.name } }
-        precure.metaClass.series = { delegate.collect{ it } }
-        precure.metaClass.getProperty = { name -> precure.find{ it.name == name } }
+        precure.metaClass.now = { delegate.find { it.now } }
+        precure.metaClass.slug = { delegate.collect { it.name } }
+        precure.metaClass.series = { delegate.collect { it } }
+        precure.metaClass.getProperty = { name -> precure.find { it.name == name } }
 
         Precure.metaClass.static.invokeMethod = { name, args ->
             precure."$name"(*args)
