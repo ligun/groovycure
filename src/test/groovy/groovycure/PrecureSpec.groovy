@@ -170,7 +170,7 @@ class PrecureSpec extends Specification{
         'hugtto'           || ['hana', 'saaya', 'homare', 'emiru', 'amour']
         'startwinkle'      || ['hikaru', 'rara', 'erena', 'madoka', 'yuni']
         'healingood'       || ['nodoka', 'chiyu', 'hinata', 'asumi']
-        'tropicalrouge'    || ['manatsu', 'sango', 'minori']
+        'tropicalrouge'    || ['manatsu', 'sango', 'minori', "asuka"]
     }
 
     def "precureプロパティを使用せずにPrecureクラスから直接動作できる"() {

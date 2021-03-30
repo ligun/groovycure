@@ -515,6 +515,13 @@ ${opt.e}
             'ひらめく果実！キュアパパイア！',
         )
 
+        def asuka = new Girl(
+            'asuka',
+            '滝沢あすか',
+            'キュアフラミンゴ',
+            'はためく翼！キュアフラミンゴ！'
+        )
+
         def unmarked_girls =
                 [
                         nagisa,
@@ -659,6 +666,7 @@ ${opt.e}
                         manatsu,
                         sango,
                         minori,
+                        asuka,
                 ].asImmutable()
 
             precure = [
