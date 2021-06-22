@@ -522,6 +522,13 @@ ${opt.e}
                 'はためく翼！キュアフラミンゴ！'
         )
 
+        def laura = new Girl(
+                'laura',
+                'ローラ・アポロドーロス・ヒュギーヌス・ラメール',
+                'キュアラメール',
+                'ゆらめく大海原！キュアラメール！'
+        )
+
         def unmarked_girls =
                 [
                         nagisa,
@@ -667,6 +674,7 @@ ${opt.e}
                         sango,
                         minori,
                         asuka,
+                        laura,
                 ].asImmutable()
 
         precure = [
