@@ -1,14 +1,15 @@
 plugins {
     id 'groovy'
     id 'maven-publish'
+    id 'signing'
     id 'application'
     id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
 archivesBaseName = 'groovycure'
-group = 'groovycure'
+group = 'net.ligun'
 mainClassName = 'groovycure.Precure'
-version = '0.0.8'
+version = '1.0'
 
 repositories {
     mavenCentral()
@@ -35,14 +36,40 @@ javadoc {
 
 publishing {
     publications {
-        maven(MavenPublication) {
+        mavenJava(MavenPublication) {
+            artifactId = archivesBaseName
             from components.java
             pom {
+                name = archivesBaseName
+                description = 'Pretty Cure'
+                url = 'https://github.com/ligun/groovycure'
                 licenses {
                     license {
                         name = 'Apache License, Version 2.0'
                         url = 'https://opensource.org/licenses/Apache-2.0'
-                        distribution = 'repo'
+                    }
+                }
+                developers {
+                    developer {
+                        id = developperId
+                        name = developperName
+                        email = developperEmail
+                    }
+                }
+                scm {
+                    connection = 'git@github.com:ligun/groovycure.git'
+                    developerConnection = 'git@github.com:ligun/groovycure.git'
+                    url = 'https://github.com/ligun/groovycure'
+                }
+                repositories {
+                    maven {
+                        def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                        def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots"
+                        url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+                        credentials {
+                            username = sonatypeUsername
+                            password = sonatypePassword
+                        }
                     }
                 }
             }
@@ -53,6 +80,10 @@ publishing {
             url "file:${buildDir}"
         }
     }
+}
+
+signing {
+    sign publishing.publications.mavenJava
 }
 
 run {
