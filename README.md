@@ -1,57 +1,70 @@
 # groovycure
 
+[![Java](https://img.shields.io/badge/java-8+-4c7e9f.svg)](https://www.oracle.com/technetwork/java/javase/downloads)
+[![Groovy](https://img.shields.io/badge/Groovy-3.0+-4c7e9f.svg)](https://groovy.apache.org/download.html)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.ligun/groovycure/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.ligun/groovycure)
 [![Join the chat at https://gitter.im/ligun/groovycure](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ligun/groovycure?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Download](https://api.bintray.com/packages/ligun/maven/groovycure/images/download.svg) ](https://bintray.com/ligun/maven/groovycure/_latestVersion)
 [![Run unit test](https://github.com/ligun/groovycure/actions/workflows/test.yaml/badge.svg)](https://github.com/ligun/groovycure/actions/workflows/test.yaml)
 
 All about Japanese battle heroine "Pretty Cure"
 
 Inspired by [pycure](https://github.com/drillbits/pycure) & [rubicure](https://github.com/sue445/rubicure)
 
+## Requirements
+### JDK
+Java 8 or later
+
+### Groovy
+Groovy 3.0 or later
+
 ## groovycure library
-Groovycure library is a implementation of Precure by Groovy.
+Groovycure library is an implementation of Precure by Groovy.
 
 ### Installation
-Use Grape in Groovy script file.
+This library is registered in MavenCentral repository.  
+Install it using Gradle
+
 ```groovy
-@Grab('groovycure:groovycure:0.0.8')
+dependencies {
+  implementation 'net.ligun:groovycure:1.0'
+}
 ```
 
-Or install it using Gradle
+Or use Grape in Groovy script file
+
 ```groovy
-repositories {
-  jcenter()
-}
-dependencies {
-  compile 'groovycure:groovycure:0.0.8'
-}
+@Grab('net.ligun:groovycure:1.0')
 ```
 
 ### Usage
 Run with Grape
+
 ```groovy
-@Grab('groovycure:groovycure')
+@Grab('net.ligun:groovycure')
 import groovycure.Precure
 
 println Precure.now()
 ```
 
-Or run with Gradle
+Or run with Gradle, you only import Precure class
+
 ```groovy
 import groovycure.Precure
 
 println Precure.now()
 ```
-If you execute groovycure in groovysh
+
+You can execute groovycure in groovysh
+
 ```groovy
 $ groovysh
 
-> groovy.grape.Grape.grab(group:'groovycure',module:'groovycure')
-> import grooycure.Precure
->
-> println Precure.now()
-
-===> キラキラ☆プリキュアアラモード
+groovy:000> :grab 'net.ligun:groovycure:1.0'
+groovy:000> import groovycure.Precure
+===> groovycure.Precure
+groovy:000> Precure.now()
+===> トロピカル～ジュ！プリキュア
 ```
 
 ## precure command
@@ -92,6 +105,13 @@ $ precure -e "prinntln Precure.now()"
 ```
 
 ## Release Note
+### 1.0
+* Support all to Tropical-rouge Precure
+* Migrate configuration to ConfigSlurper
+* Chane license
+* Change package name
+* Change repository to ManvenCentral
+
 ### 0.0.8
 * Support キラキラ☆プリキュアアラモード
 
