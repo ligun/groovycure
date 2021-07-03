@@ -18,26 +18,23 @@ Java 8 or later
 ### Groovy
 Groovy 3.0 or later
 
-## groovycure library
-Groovycure library is an implementation of Precure by Groovy.
-
-### Installation
+## Installation
 This library is registered in MavenCentral repository.  
 Install it using Gradle
 
 ```groovy
 dependencies {
-  implementation 'net.ligun:groovycure:1.0'
+  implementation 'net.ligun:groovycure:1.1'
 }
 ```
 
 Or use Grape in Groovy script file
 
 ```groovy
-@Grab('net.ligun:groovycure:1.0')
+@Grab('net.ligun:groovycure:1.1')
 ```
 
-### Usage
+## Usage
 Run with Grape
 
 ```groovy
@@ -60,51 +57,19 @@ You can execute groovycure in groovysh
 ```groovy
 $ groovysh
 
-groovy:000> :grab 'net.ligun:groovycure:1.0'
+groovy:000> :grab 'net.ligun:groovycure:1.1'
 groovy:000> import groovycure.Precure
 ===> groovycure.Precure
 groovy:000> Precure.now()
 ===> トロピカル～ジュ！プリキュア
 ```
 
-## precure command
-Groovycure can be used as a command.  
-Command name is "precure".  
-It supports Unix shell and Windows command prompt.
-
-### Installation
-You need to build & install yourself with Gradle.
-
-```bash
-git clone https://github.com/ligun/groovycure
-cd groovycure
-gradlew jarsh
-```
-
-Gradle jarsh task creates an executable Jar file wrapped in shell or batch script.  
-If you success a build, command files are created to "./build/scripts/".
-You can use precure command by moving the file to bin directory.  
-
-```bash
-cp ./build/scripts/precure /usr/local/bin
-```
-
-### Usage
-#### Option
-option | full name | description
--------|-----------|------------
--a     | --all     | Display all Precure information
--e     |           | Execute Groovy script with imported groovycure
--v     | --version | Display precure commad version
--h     | --help    | Display help
-
-### Example
-```bash
-$ precure -e "prinntln Precure.now()"
-キラキラ☆プリキュアアラモード
-```
-
 ## Release Note
+### 1.1
+* Fix the bug that library malfunction when Groovy version is less than 3.0.8
+* Fix the bug that library malfunction when Java version iss less than 15
+* Delete standalone command function
+
 ### 1.0
 * Support all to Tropical-rouge Precure
 * Migrate configuration to ConfigSlurper
