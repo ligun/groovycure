@@ -2,53 +2,8 @@ package groovycure
 
 class Precure implements GroovyInterceptable {
     private static final def precure
-    private static final String VERSION = '0.1.0-SNAPSHOT'
-    private static final String DESCRIPTION = 'PreCure(Pretty Cure)'
 
     private Precure() {}
-
-    static void main(String... args) {
-        def cli = new CliBuilder(usage: 'PreCure')
-
-        cli.a(longOpt: 'all', 'show all Precure information')
-        cli.e(argName: 'script', args: 1, 'run script')
-        cli.h(longOpt: 'help', 'display to help')
-        cli.v(longOpt: 'version', 'show version')
-
-        def opt = cli.parse(args)
-
-        if (!opt) return
-
-        if (opt.a) {
-            Precure.series().each { series ->
-                println series.title
-                println "  - 放送開始：${series.broadcast_from.format('yyyy/MM/dd')}"
-                println "  - 放送終了：${series.broadcast_to?.format('yyyy/MM/dd') ?: 'On air'}"
-                println "  - プリキュア："
-                series.girls.each { girls ->
-                    println "    * ${girls.name}(${girls.precure_name})"
-                    girls.prologue.split('\n').each { println "      $it" }
-                }
-                println()
-            }
-        }
-
-        if (opt.e) {
-            def shell = new GroovyShell(Precure.classLoader)
-            shell.evaluate("""\
-import groovycure.Precure
-${opt.e}
-"""
-            )
-            return
-        }
-        if (opt.h) {
-            cli.usage()
-        }
-        if (opt.v) {
-            println "${DESCRIPTION} Base:groovycure Version:${VERSION}"
-        }
-    }
 
     static {
         def conf = new ConfigSlurper().parse(Precure.class.getClassLoader().getResource('PrecureConfig.groovy'))
