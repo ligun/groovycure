@@ -36,7 +36,6 @@ class SeriesSpec extends Specification {
         title == "アジャイルプリキュア"
     }
 
-    @Unroll
     def "#propertyの値を変更できない"() {
         when:
         sut."$property" = data

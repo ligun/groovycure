@@ -43,7 +43,6 @@ class PrecureSpec extends Specification{
         ]
     }
 
-    @Unroll
     def "現在のシリーズは#expectedである"() {
         when:
         def current = sut.now()
@@ -80,7 +79,6 @@ class PrecureSpec extends Specification{
         thrown(UnsupportedOperationException)
     }
 
-    @Unroll
     def "#seriesの放送開始日は#dateである"() {
         when:
         def broadcast_from = sut."$series".broadcast_from
@@ -99,7 +97,6 @@ class PrecureSpec extends Specification{
         'tropicalrouge'   |  '2021/02/28'
     }
 
-    @Unroll
     def "#seriesの放送終了日は#dateである"() {
         when:
         def broadcast_to = sut."$series".broadcast_to
@@ -125,7 +122,6 @@ class PrecureSpec extends Specification{
         date == null
     }
 
-    @Unroll
     def "#seriesヒロイン#nameの変身バンクは#speachから始まる"() {
         when:
         def girl = sut."$series".girls."$name"
@@ -143,7 +139,6 @@ class PrecureSpec extends Specification{
 
     }
 
-    @Unroll
     def "#seriesのメンバーは#expectedである"(){
         when:
         def girls = sut."$series".girls.collect{ it.slug }

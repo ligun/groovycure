@@ -37,7 +37,6 @@ class GirlSpec extends Specification {
         precure == "${name}(${precure_name})"
     }
 
-    @Unroll
     def "#propertyの値を変更できない"() {
         when:
         sut."$property" = data
