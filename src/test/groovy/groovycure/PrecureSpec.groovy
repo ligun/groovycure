@@ -48,10 +48,10 @@ class PrecureSpec extends Specification{
         def current = sut.now()
 
         then:
-        current.toString() == expected
+        current?.toString() == expected
 
         where:
-        expected = 'トロピカル～ジュ！プリキュア'
+        expected = null
     }
 
     def "勝手シリーズを追加しようとしたら例外が出る"() {
@@ -112,11 +112,12 @@ class PrecureSpec extends Specification{
         'hugtto'          |  '2019/01/27'
         'startwinkle'     |  '2020/01/26'
         'healingood'      |  '2021/02/21'
+        'tropicalrouge'   |  '2022/01/30'
     }
 
     def "放映中のシリーズの放送終了日は設定されていない"() {
         when:
-        def date = sut.now().broadcast_to
+        def date = sut.now()?.broadcast_to
 
         then:
         date == null

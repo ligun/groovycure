@@ -479,6 +479,7 @@ series {
     tropicalrouge {
         title = 'トロピカル～ジュ！プリキュア'
         broadcast_from = '2021/2/28'
+        broadcast_to = '2022/1/30'
         girls = ['manatsu', 'sango', 'minori', 'asuka', 'laura']
     }
 }

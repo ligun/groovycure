@@ -65,9 +65,12 @@ groovy:000> Precure.now()
 ```
 
 ## Release Note
+### 1.1.1
+* Tropical-rouge Precure was over
+
 ### 1.1
 * Fix the bug that library malfunction when Groovy version is less than 3.0.8
-* Fix the bug that library malfunction when Java version iss less than 15
+* Fix the bug that library malfunction when Java version is less than 15
 * Delete standalone command function
 
 ### 1.0
