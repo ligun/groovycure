@@ -371,6 +371,21 @@ girls {
         precure_name = 'キュアラメール'
         prologue = 'ゆらめく大海原！キュアラメール！'
     }
+    yui {
+        name = '和実ゆい'
+        precure_name = 'キュアプレシャス'
+        prologue = 'あつあつごはんでみなぎるパワー！キュアプレシャス！'
+    }
+    kokone {
+        name = '芙羽ここね'
+        precure_name = 'キュアスパイシー'
+        prologue = 'ふわふわサンドde心にスパイス！キュアスパイシー！'
+    }
+    ran {
+        name = '華満らん'
+        precure_name = 'キュアヤムヤム'
+        prologue = 'きらめくヌードル・エモーション！キュアヤムヤム！'
+    }
 }
 
 series {
@@ -481,5 +496,10 @@ series {
         broadcast_from = '2021/2/28'
         broadcast_to = '2022/1/30'
         girls = ['manatsu', 'sango', 'minori', 'asuka', 'laura']
+    }
+    deliciousparty {
+        title = 'デリシャスパーティ♡プリキュア'
+        broadcast_from = '2022/2/6'
+        girls = ['yui', 'kokone', 'ran']
     }
 }

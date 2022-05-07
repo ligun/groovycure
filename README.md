@@ -65,6 +65,10 @@ groovy:000> Precure.now()
 ```
 
 ## Release Note
+
+### 1.1.2
+* Supported Delicious-Party Precure
+
 ### 1.1.1
 * Tropical-rouge Precure was over
 
