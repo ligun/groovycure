@@ -376,6 +376,16 @@ girls {
         precure_name = 'キュアプレシャス'
         prologue = 'あつあつごはんでみなぎるパワー！キュアプレシャス！'
     }
+    kokone {
+        name = '芙羽ここね'
+        precure_name = 'キュアスパイシー'
+        prologue = 'ふわふわサンドde心にスパイス！キュアスパイシー！'
+    }
+    ran {
+        name = '華満らん'
+        precure_name = 'キュアヤムヤム'
+        prologue = 'きらめくヌードル・エモーション！キュアヤムヤム！'
+    }
 }
 
 series {
@@ -490,6 +500,6 @@ series {
     deliciousparty {
         title = 'デリシャスパーティ♡プリキュア'
         broadcast_from = '2022/2/6'
-        girls = ['yui']
+        girls = ['yui', 'kokone', 'ran']
     }
 }
