@@ -11,7 +11,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v1
         with:
-          java-version: ${{ matrix.java }}
+          java-version: 8
       - name: Cache Gradle packages
         uses: actions/cache@v2
         with:
@@ -19,7 +19,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: Build with Gradle
-        run: ./gradlew test
+        run: ./gradlew test -PjavaVersion=${{ matrix.java }}
       - name: Archive code coverage results
         uses: actions/upload-artifact@v2
         with:

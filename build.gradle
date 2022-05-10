@@ -8,6 +8,8 @@ archivesBaseName = 'groovycure'
 group = 'net.ligun'
 version = '1.1.2'
 
+def javaVersion = 8
+
 repositories {
     mavenCentral()
 }
@@ -19,6 +21,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    javaLauncher.set(javaToolchains.launcherFor {
+        def launcherVersion = project.hasProperty('javaVersion') ? Integer.parseInt(project.property('javaVersion')) : javaVersion
+        languageVersion = JavaLanguageVersion.of(launcherVersion)
+    })
 }
 
 java {
@@ -26,7 +32,7 @@ java {
     withSourcesJar()
 
     toolchain {
-        languageVersion = JavaLanguageVersion.of(8)
+        languageVersion = JavaLanguageVersion.of(javaVersion)
     }
 }
 
